@@ -13,9 +13,16 @@ class wordsTableSeeder extends Seeder
     {
     	$faker = Faker::create();
        	for ($i=0; $i < 50; $i++) {
+
+            if ($i%2 == 0) {
+                $name = $faker->word;
+            }else{
+                $name = $faker->word.' '.$faker->word;
+            }
+
 		    \DB::table('words')->insert(array(
 		           'category_id' => $faker->numberBetween(1,10),
-		           'name' => $faker->name,
+		           'name' => $name,
 		    ));
 		}    }
 }

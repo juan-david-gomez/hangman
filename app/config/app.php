@@ -51,7 +51,7 @@ return [
     |
     */
 
-    'url' => env('APP_URL', 'http://localhost/composerLaravel/app/'),
+    'url' => env('APP_URL', 'http://localhost:8002/hangman/app/public/'),
 
     /*
     |--------------------------------------------------------------------------
