@@ -3,7 +3,7 @@
 
 var app = angular.module('hangman',[]);
 
-app.constant('APIURL','http://localhost:8002/hangman/public/index.php');
+app.constant('APIURL','http://localhost/hangman/public/index.php');
 
 app.controller('main',['$scope','$http','APIURL',mainFunction]);
 
