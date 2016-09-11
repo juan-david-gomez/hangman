@@ -12,5 +12,8 @@
 * Estando en la raiz del proyecto ejecutar php artisan migrate --seed
 * Dar permisos de escritura recursivamente al usuario de apache a las carpetas : storage - boostrap/cache
 
-*DEMO : http://hangman.esy.es/
-*Juan David Gómez
+```
+DEMO : http://hangman.esy.es/
+
+```
+Juan David Gómez
