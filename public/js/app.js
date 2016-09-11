@@ -128,23 +128,33 @@ function mainFunction($scope,$http,APIURL) {
 	// Se envia al scope para ser usada al desplegar cada letra en la vista
 	$scope.isSpace 		  = isSpace;
 	
+
+	var normalizeLetter = function (s) {
+		var r=s.toLowerCase();
+	            r = r.replace(new RegExp(/\s/g),"");
+	            r = r.replace(new RegExp(/[àáâãäå]/g),"a");
+	            r = r.replace(new RegExp(/[èéêë]/g),"e");
+	            r = r.replace(new RegExp(/[ìíîï]/g),"i");
+	            r = r.replace(new RegExp(/ñ/g),"n");                
+	            r = r.replace(new RegExp(/[òóôõö]/g),"o");
+	            r = r.replace(new RegExp(/[ùúûü]/g),"u");        
+	 	return r;
+	}
+
 	// Resive la palabra y llena los arreglos wordHidden y wordReal
 	// se usa para desplegar las posiciones en la vista y llenar el arreglo real
 	var setWord = function (word) {
 		var wordArrayHidden = [];
 		var wordArrayReal = [];
 		for (var i = 0; i < word.length; i++) {
-		    var letter = word.charAt(i).toUpperCase();
+			var originLetter = word.charAt(i);			
+		    var letter = normalizeLetter(originLetter).toUpperCase();
 		    wordArrayReal[i] = letter;
 		    // Si es una letra se deja el espacio vacio '' pero si es una espacio se deja el mismo ' '
 		    wordArrayHidden[i] = isSpace(letter) ? ' ':'';
 		}
 		$scope.wordHidden = wordArrayHidden;
 		$scope.wordReal = wordArrayReal;
-		// $scope.errorLetters = [];
-		// wordsUsed = [];
-		// attempts = 0;
-		// $scope.activeAttempt = 'attempt0';
 		// Pone el foco en control que captura las teclas del usuario
 		$("#letterSpace").focus();
 	}
